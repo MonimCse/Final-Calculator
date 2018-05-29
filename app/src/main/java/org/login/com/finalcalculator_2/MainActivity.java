@@ -1,5 +1,6 @@
 package org.login.com.finalcalculator_2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText  mEdtValue;
+    EditText mEdtValue;
     Button mBtnOne;
     Button mBtnTwo;
     Button mBtnThree;
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     Button mBtnMul;
     Button mBtnDiv;
     Button mBtnEqual;
+
+    Values values = new Values();
+    int action;
+
+    ICalculation iCalculation = new Calculation();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,10 +116,62 @@ public class MainActivity extends AppCompatActivity {
                 setValueToEdt(mBtnZero.getText().toString());
             }
         });
+
+
+        mBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                action = 0;
+
+                values.setFirstValue(Integer.parseInt(mEdtValue.getText().toString()));
+                mEdtValue.setText("");
+            }
+        });
+
+        mBtnSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                action = 1;
+
+                values.setFirstValue(Integer.parseInt(mEdtValue.getText().toString()));
+                mEdtValue.setText("");
+            }
+        });
+
+        mBtnMul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                action = 2;
+
+                values.setFirstValue(Integer.parseInt(mEdtValue.getText().toString()));
+                mEdtValue.setText("");
+            }
+        });
+
+        mBtnDiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                action = 3;
+
+                values.setFirstValue(Integer.parseInt(mEdtValue.getText().toString()));
+                mEdtValue.setText("");
+            }
+        });
+
+        mBtnEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                values.setSecondValue(Integer.parseInt(mEdtValue.getText().toString()));
+                mEdtValue.setText("");
+                mEdtValue.setText(String.valueOf(iCalculation.add(values)));
+
+            }
+        });
+
+
     }
 
-    public void setValueToEdt(String value)
-    {
-        mEdtValue.setText(mEdtValue.getText().toString()+value);
+    public void setValueToEdt(String value) {
+        mEdtValue.setText(mEdtValue.getText().toString() + value);
     }
 }
