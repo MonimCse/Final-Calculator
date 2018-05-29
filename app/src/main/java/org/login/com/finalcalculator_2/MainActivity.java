@@ -163,7 +163,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 values.setSecondValue(Integer.parseInt(mEdtValue.getText().toString()));
                 mEdtValue.setText("");
-                mEdtValue.setText(String.valueOf(iCalculation.add(values)));
+                if(action == 0)
+                {
+                    mEdtValue.setText(String.valueOf(iCalculation.add(values)));
+                }else if(action == 1)
+                {
+                    mEdtValue.setText(String.valueOf(iCalculation.sub(values)));
+                }else if(action == 2)
+                {
+                    mEdtValue.setText(String.valueOf(iCalculation.mul(values)));
+                }else
+                {
+                    mEdtValue.setText(String.valueOf(iCalculation.div(values)));
+                }
+
 
             }
         });

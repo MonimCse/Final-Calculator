@@ -8,16 +8,16 @@ public class Calculation  implements ICalculation{
 
     @Override
     public int sub(Values values) {
-        return 0;
+        return values.getFirstValue() - values.getSecondValue();
     }
 
     @Override
     public int mul(Values values) {
-        return 0;
+        return values.getFirstValue() *  values.getSecondValue();
     }
 
     @Override
     public int div(Values values) {
-        return 0;
+        return values.getFirstValue() / values.getSecondValue();
     }
 }
